@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 20141216213518) do
   create_table "toys", force: true do |t|
     t.string   "title",      null: false
     t.string   "url",        null: false
-    t.integer  "user_id",    null: false
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

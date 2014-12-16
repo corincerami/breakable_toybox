@@ -11,11 +11,11 @@ class ToysController < ApplicationController
 
   def show
     @toy = Toy.find(params[:id])
+    @user = User.find(@toy.user_id)
   end
 
   def create
-    binding.pry
-    @toy = Toy.create(toy_params)
+    @toy = Toy.create(title: params[:toy][:title], url: params[:toy][:url], user_id: current_user.id)
     if @toy.save
       redirect_to toy_path(@toy)
     else
@@ -24,8 +24,4 @@ class ToysController < ApplicationController
   end
 
   private
-
-  def toy_params
-    params.require(:toy).permit(:title, :url)
-  end
 end

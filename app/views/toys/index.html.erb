@@ -1,4 +1,9 @@
 <% @toys.each do |toy| %>
-  <div><%= toy.title %></div>
-  <div><%= toy.url %></div>
+  <div class='content-box'>
+    <div><%= toy.user.email %></div>
+    <div><%= toy.title %></div>
+    <div><%= link_to toy.url %></div>
+  </div>
 <% end %>
+
+<%= link_to "Submit a new app", new_toy_path %>
