@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 20141216213518) do
     t.string   "title",      null: false
     t.string   "url",        null: false
     t.integer  "user_id"
+    t.string   "creator"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -38,6 +39,7 @@ ActiveRecord::Schema.define(version: 20141216213518) do
     t.integer  "failed_attempts",        default: 0,  null: false
     t.string   "unlock_token"
     t.datetime "locked_at"
+    t.string   "nickname"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

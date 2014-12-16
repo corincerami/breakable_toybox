@@ -1,5 +1,4 @@
 <div class='content-box'>
-  <div><%= @toy.user.email %></div>
-  <div><%= @toy.title %></div>
+  <div><%= "#{@toy.title} by #{@toy.creator}" %></div>
   <div><%= link_to @toy.url %></div>
 </div>

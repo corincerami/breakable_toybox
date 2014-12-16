@@ -15,7 +15,7 @@ class ToysController < ApplicationController
   end
 
   def create
-    @toy = Toy.create(title: params[:toy][:title], url: params[:toy][:url], user_id: current_user.id)
+    @toy = Toy.create(title: params[:toy][:title], url: params[:toy][:url], creator: params[:toy][:creator], user_id: current_user.id)
     if @toy.save
       redirect_to toy_path(@toy)
     else

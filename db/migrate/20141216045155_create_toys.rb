@@ -4,6 +4,7 @@ class CreateToys < ActiveRecord::Migration
       t.string :title, null: false
       t.string :url, null: false
       t.integer :user_id
+      t.string :creator
       t.timestamps
     end
   end
