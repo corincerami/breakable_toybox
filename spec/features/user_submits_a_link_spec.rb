@@ -10,4 +10,12 @@ feature "User submits a link" do
     expect(page).to have_content("My Breakable Toy")
     expect(page).to have_content("http://www.google.com")
   end
+
+  it "submits a blank form" do
+    visit '/toys/new'
+    click_on "Submit Link"
+
+    expect(page).to have_content("Title can't be blank")
+    expect(page).to have_content("Url can't be blank")
+  end
 end

@@ -9,7 +9,11 @@ class ToysController < ApplicationController
 
   def create
     @toy = Toy.create(toy_params)
-    redirect_to toy_path(@toy)
+    if @toy.save
+      redirect_to toy_path(@toy)
+    else
+      render new_toy_path
+    end
   end
 
   private
