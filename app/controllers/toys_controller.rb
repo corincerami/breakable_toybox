@@ -1,6 +1,12 @@
 class ToysController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :create]
+
   def new
     @toy = Toy.new
+  end
+
+  def index
+    @toys = Toy.all
   end
 
   def show
@@ -8,6 +14,7 @@ class ToysController < ApplicationController
   end
 
   def create
+    binding.pry
     @toy = Toy.create(toy_params)
     if @toy.save
       redirect_to toy_path(@toy)

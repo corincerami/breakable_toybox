@@ -1,7 +1,14 @@
 require 'rails_helper'
 
+
 feature "User submits a link" do
   it "posts a valid link" do
+    user = FactoryGirl.create(:user)
+
+    visit '/users/sign_in'
+    fill_in "Email", with: user.email
+    fill_in "Password", with: user.password
+    click_on "Log in"
     visit '/toys/new'
     fill_in "Title", with: "My Breakable Toy"
     fill_in "Url", with: "http://www.google.com"
@@ -12,6 +19,12 @@ feature "User submits a link" do
   end
 
   it "submits a blank form" do
+    user = FactoryGirl.create(:user)
+
+    visit '/users/sign_in'
+    fill_in "Email", with: user.email
+    fill_in "Password", with: user.password
+    click_on "Log in"
     visit '/toys/new'
     click_on "Submit Link"
 

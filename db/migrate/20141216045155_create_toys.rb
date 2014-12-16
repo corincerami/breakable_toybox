@@ -3,6 +3,7 @@ class CreateToys < ActiveRecord::Migration
     create_table :toys do |t|
       t.string :title, null: false
       t.string :url, null: false
+      t.integer :user_id, null: false
       t.timestamps
     end
   end
