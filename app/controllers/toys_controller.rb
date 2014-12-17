@@ -1,5 +1,5 @@
 class ToysController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create, :edit, :update]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
 
   def new
     @toy = Toy.new
@@ -21,11 +21,16 @@ class ToysController < ApplicationController
   def update
     @toy = Toy.find(params[:id])
     @toy.update(toy_params)
-    if @toy.save
-      flash[:notice] = 'App edited successfully'
-      redirect_to toy_path(@toy)
+    if @toy.user.id == current_user.id
+      if @toy.save
+        flash[:notice] = 'App edited successfully'
+        redirect_to toy_path(@toy)
+      else
+        render "edit"
+      end
     else
-      render "edit"
+      flash[:notice] = "You don't have permission to do that"
+      render "show"
     end
   end
 
@@ -40,8 +45,14 @@ class ToysController < ApplicationController
   end
 
   def destroy
-    Toy.destroy(params[:id])
-    redirect_to toys_path
+    @toy = Toy.find(params[:id])
+    if current_user.id == @toy.user.id
+      Toy.destroy(@toy.id)
+      redirect_to toys_path
+    else
+      flash[:notice] = "You don't have permission to do that"
+      render "show"
+    end
   end
 
   private
