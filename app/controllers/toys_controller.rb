@@ -39,6 +39,11 @@ class ToysController < ApplicationController
     end
   end
 
+  def destroy
+    Toy.destroy(params[:id])
+    redirect_to "index"
+  end
+
   private
 
   def toy_params
