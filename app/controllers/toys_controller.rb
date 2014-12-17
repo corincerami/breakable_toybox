@@ -41,7 +41,7 @@ class ToysController < ApplicationController
 
   def destroy
     Toy.destroy(params[:id])
-    redirect_to "index"
+    redirect_to toys_path
   end
 
   private
