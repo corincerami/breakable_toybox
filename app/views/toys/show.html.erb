@@ -1,4 +1,3 @@
 <div class='content-box'>
-  <div><%= "#{@toy.title} by #{@toy.creator}" %></div>
-  <div><%= link_to @toy.url %></div>
+  <div><%= link_to("#{@toy.title} by #{@toy.creator}", @toy.url) %></div>
 </div>
