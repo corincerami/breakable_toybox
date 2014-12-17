@@ -1,5 +1,5 @@
 <%= flash[:notice] %>
 <div class='content-box'>
-  <div><%= link_to("#{@toy.title} by #{@toy.creator}", @toy.url) %></div>
+  <div><a href='<%= "#{@toy.url}" %>'><%= "#{@toy.title} by #{@toy.creator}" %></a></div>
 </div>
 <%= link_to("Edit app", edit_toy_path(@toy)) %>

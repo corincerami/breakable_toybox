@@ -1,6 +1,6 @@
 <% @toys.each do |toy| %>
   <div class='content-box'>
-    <div><%= link_to("#{toy.title} by #{toy.creator}", toy.url) %></div>
+    <div><%= link_to("#{toy.title} by #{toy.creator}", toy_path(toy)) %></div>
   </div>
 <% end %>
 
